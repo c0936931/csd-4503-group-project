@@ -1,1 +1,103 @@
-EMPTY FOR NOW
+/* CSS reset */
+body, header, nav, main, footer, h1, div, img, ul {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/* Style rules for body and images */
+body {
+	background-color: #545454;
+}
+
+header img {
+	display: block;
+	margin: 0 auto;
+	max-width: 250px; /* limit logo size */
+	height: auto;
+}
+
+/* Style rules for header */
+header {
+	width: 25%;
+	float: left;
+	padding-bottom: 0;
+}
+
+/* Style rules for navigation area */
+nav {
+	width: 70%;
+	float: right;
+	margin: 4em 1em 0 0;
+	padding: 1%;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	text-align: center;
+}
+
+nav li {
+	display: inline-block;
+	font-size: 1.5em;
+	font-family: "Francois One", sans-serif;
+	font-weight: bold;
+}
+
+nav li a {
+	display: block;
+	color: #fff;
+	text-align: center;
+	padding: 0.5em 2em;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	color: #000;
+	background-color: #fff;
+}
+
+/* Style rules for main content */
+main {
+	clear: left;
+	text-align: center;
+	background-color: #fff;
+	padding: 2%;
+	font-size: 1.15em;
+	font-family: "Roboto Slab", serif;
+}
+
+
+#indexDescription h3 {
+  font-size: 2.2em;
+  margin-bottom: 0.5em;
+}
+
+#indexDescription p {
+  font-size: 1.2em;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+#newEpisode h3{
+	padding-top: 2em;
+}
+
+#newEpisode  h3 {
+	font-size: 1.8em;
+}
+
+/* Style rules for footer content */
+footer p {
+	font-size: 0.75em;
+	text-align: center;
+	color: #fff;
+	padding: 0 1em;
+}
+
+footer p a {
+	color: #fff;
+	text-decoration: none;
+}
