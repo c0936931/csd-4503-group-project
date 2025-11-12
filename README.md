@@ -24,7 +24,9 @@ This is a simple site built as part of our coursework. It showcases static web i
 - Created Dockerfile
 
 ### Isaac (`@c0954832`)
-- 
+- Created Episodes.html
+- Created JS file
+- Restructured folders
 
 ### Owen (`@c0942695`)
 - Created Template
