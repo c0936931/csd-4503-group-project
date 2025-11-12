@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Episodes: Team Scrum Stormers Podcast</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/2025-10-08-TeamScrumStormers-TeamLogo.png" alt="Team Scrum Stormers logo">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li> 
+            <li><a href="episodes.html">Episodes</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="episodesList">
+            <h1>Podcast Episodes</h1>
+            <p>Select an episode to view:</p>
+
+            <label for="episodeSelect">Choose an episode:</label>
+            <select id="episodeSelect"></select>
+
+            <div id="episodeDisplay" style="margin-top:20px;">
+                <p>Selected episode: <span id="currentEpisode"></span></p>
+                <video id="episodePlayer" controls width="600">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Copyright 2025. All Rights Reserved.</p>
+    </footer>
+    <script src="js/episodes.js"></script>
+</body>
+</html>
