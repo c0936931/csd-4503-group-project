@@ -1,0 +1,42 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # instal node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # html Validator
+      - name: Install HTML Validator
+        run: npm install -g html-validate
+
+      - name: Validate HTML files
+        run: html-validate html/index.html html/about.html html/episodes.html
+
+      # css linting
+      - name: Install CSS Linter
+        run: npm install -g stylelint stylelint-config-standard
+
+      - name: Lint CSS files
+        run: stylelint html/css/styles.css
+
+      # js linting
+      - name: Install ESLint
+        run: npm install -g eslint
+
+      - name: Lint JavaScript files
+        run: eslint "html/js/*.js"
