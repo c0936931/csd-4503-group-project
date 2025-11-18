@@ -20,8 +20,10 @@ This is a simple site built as part of our coursework. It showcases static web i
 ## 👥 Contributors
 
 ### Jared (`@c0936931`)
+- Created Repo and Readme.md
 - Created About.html
 - Created Dockerfile
+- Created docker-compose.yml
 
 ### Isaac (`@c0954832`)
 - Created Episodes.html
