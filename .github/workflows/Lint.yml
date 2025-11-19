@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Lint and Vailidation testing
 
 on:
   push:
@@ -14,12 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # instal node.js
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
       # html Validator
       - name: Install HTML Validator
         run: npm install -g html-validate
@@ -32,11 +26,11 @@ jobs:
         run: npm install -g stylelint stylelint-config-standard
 
       - name: Lint CSS files
-        run: stylelint html/css/styles.css
+        run: stylelint html/css/styles.css --config lint-configs/.stylelintrc.json "css/**/*.css"
 
       # js linting
       - name: Install ESLint
-        run: npm install -g eslint
+        run: npm install -g eslint 
 
       - name: Lint JavaScript files
-        run: eslint "html/js/*.js"
+        run: eslint "html/js/*.js" --config lint-configs/eslint.config.cjs "html/js/*.js"
