@@ -6,6 +6,8 @@ services:
     container_name: nginx_server
     ports:
       - "8080:80"
+    depends_on:
+      - uptime-kuma
     restart: unless-stopped
 
   uptime-kuma:
