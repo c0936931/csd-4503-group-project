@@ -5,7 +5,6 @@ body, header, nav, main, footer, h1, div, img, ul {
 	border: 0;
 }
 
-/* Style rules for body and images */
 body {
 	background-color: #545454;
 }
@@ -13,18 +12,16 @@ body {
 header img {
 	display: block;
 	margin: 0 auto;
-	max-width: 250px; /* limit logo size */
+	max-width: 250px; 
 	height: auto;
 }
 
-/* Style rules for header */
 header {
 	width: 25%;
 	float: left;
 	padding-bottom: 0;
 }
 
-/* Style rules for navigation area */
 nav {
 	width: 70%;
 	float: right;
@@ -58,7 +55,6 @@ nav li a:hover {
 	background-color: #fff;
 }
 
-/* Style rules for main content */
 main {
 	clear: left;
 	text-align: center;
@@ -68,28 +64,26 @@ main {
 	font-family: "Roboto Slab", serif;
 }
 
-
-#indexDescription h3 {
+main h1 {
   font-size: 2.2em;
   margin-bottom: 0.5em;
 }
 
-#indexDescription p {
+main h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+main p {
   font-size: 1.2em;
   color: #333;
   line-height: 1.6;
 }
 
-
-#newEpisode h3{
-	padding-top: 2em;
+#episodeDisplay{
+	margin-top: 20px;
 }
 
-#newEpisode  h3 {
-	font-size: 1.8em;
-}
-
-/* Style rules for footer content */
 footer p {
 	font-size: 0.75em;
 	text-align: center;
