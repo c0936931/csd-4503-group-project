@@ -1,0 +1,16 @@
+{
+  "monitors": [
+    {
+      "name": "Local Nginx",
+      "type": "http",
+      "url": "http://nginx:80",
+      "interval": 60
+    },
+    {
+      "name": "External Ping",
+      "type": "ping",
+      "hostname": "devops.nelson.win",
+      "interval": 60
+    }
+  ]
+}
