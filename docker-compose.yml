@@ -18,3 +18,12 @@ services:
       - "3001:3001"
     restart: unless-stopped
     entrypoint: ["/bin/sh", "/init/init.sh"]
+  
+  cloudflare-ddns:
+    image: oznu/cloudflare-ddns:latest
+    environment:
+      - API_KEY=${CF_API_KEY}
+      - ZONE=${CF_ZONE}
+      - SUBDOMAIN=${CF_SUBDOMAIN}
+      - PROXIED=true
+    restart: unless-stopped
