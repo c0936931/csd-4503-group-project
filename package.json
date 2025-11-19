@@ -1,0 +1,27 @@
+{
+  "name": "devopstesting-main",
+  "version": "1.0.0",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+  "lint:js": "eslint \"html/js/**/*.js\" --config lint-configs/eslint.config.cjs",
+  "lint:css": "stylelint \"html/css/**/*.css\" --config lint-configs/.stylelintrc.json",
+  "lint": "npm run lint:js && npm run lint:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcsf2454/devopsTesting-main.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lcsf2454/devopsTesting-main/issues"
+  },
+  "homepage": "https://github.com/lcsf2454/devopsTesting-main#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.1"
+  }
+}
