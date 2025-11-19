@@ -1,0 +1,7 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-id-pattern": "^[a-zA-Z][a-zA-Z0-9]+$",
+     "no-descending-specificity": null
+  }
+}
