@@ -2,7 +2,7 @@ name: Deploy to Azure VM
 
 on:
   workflow_run:
-    workflows: ["Playwright Tests"]  # <-- workflow names, not filenames
+    workflows: ["Playwright Tests"] # <-- workflow names, not filenames
     types:
       - completed
 
@@ -18,15 +18,15 @@ jobs:
 
       - name: SSH into Azure VM and deploy
         uses: appleboy/ssh-action@v0.1.10
+        env:
+          CF_ZONE: ${{ secrets.CF_ZONE }}
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
         with:
           host: ${{ secrets.AZURE_VM_HOST }}
           username: ${{ secrets.AZURE_VM_USER }}
           key: ${{ secrets.AZURE_VM_KEY }}
+          envs: CF_ZONE,CF_API_KEY
           script: |
-            # Export secrets so docker-compose can use them
-            export CF_ZONE="${CF_ZONE}"
-            export CF_API_KEY="${CF_API_KEY}"
-            
             # Navigate to app directory (or create it)
             mkdir -p ~/app && cd ~/app
 

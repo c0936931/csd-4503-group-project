@@ -1,10 +1,10 @@
-name: Lint and Vailidation testing
+name: Lint and Validation
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-test:
@@ -30,7 +30,9 @@ jobs:
 
       # js linting
       - name: Install ESLint
-        run: npm install -g eslint 
+        run: npm install -g eslint
 
       - name: Lint JavaScript files
         run: eslint "html/js/*.js" --config lint-configs/eslint.config.cjs "html/js/*.js"
+
+

@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: ./dockers/Dockerfile.nginx
+    image: c0954832/nginx-server:latest
     container_name: nginx_server
     ports:
       - "80:80"
@@ -14,6 +15,7 @@ services:
     build:
       context: .
       dockerfile: ./dockers/Dockerfile.uptime-kuma
+    image: c0954832/uptime-kuma-custom:latest
     container_name: uptime-kuma
     ports:
       - "3001:3001"
@@ -27,3 +29,4 @@ services:
       - ZONE=${CF_ZONE}
       - PROXIED=true
     restart: unless-stopped
+
