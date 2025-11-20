@@ -34,10 +34,11 @@ jobs:
               git clone -b azure_vm+https https://github.com/c0936931/csd-4503-group-project.git .
             fi
 
-            mkdir -p ~/ssl
-            echo "${{ secrets.CF_CERT }}" > /home/Barrack1393/ssl/cloudflare_scrumstormers.pem
-            echo "${{ secrets.CF_KEY }}" > /home/Barrack1393/ssl/cloudflare_scrumstormers.key
-            sudo chmod 600 /home/Barrack1393/cloudflare_scrumstormers.key
+            sudo mkdir -p /etc/ssl/custom
+            printf "%s" "${{ secrets.CF_CERT }}" | sudo tee /etc/ssl/custom/cloudflare_scrumstormers.pem > /dev/null
+            printf "%s" "${{ secrets.CF_KEY }}"  | sudo tee /etc/ssl/custom/cloudflare_scrumstormers.key > /dev/null
+            sudo chmod 644 /etc/ssl/custom/cloudflare_scrumstormers.pem
+            sudo chmod 600 /etc/ssl/custom/cloudflare_scrumstormers.key
             
             # Run docker-compose with ephemeral env-file
             cat > .env <<EOF
