@@ -21,32 +21,17 @@ jobs:
         uses: appleboy/ssh-action@v0.1.10
         env:
           CF_ZONE: ${{ secrets.CF_ZONE }}
-          # CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
         with:
           host: ${{ secrets.AZURE_VM_HOST }}
           username: ${{ secrets.AZURE_VM_USER }}
           key: ${{ secrets.AZURE_VM_KEY }}
           # envs: CF_ZONE,CF_API_KEY
           script: |
-            # export CF_API_KEY=$CF_API_KEY
-            # export CF_ZONE=$CF_ZONE
-            echo ======================
-            echo $CF_ZONE
-            echo ${{ secrets.CF_ZONE }}
-            echo ======================
-            export CF_ZONE=$CF_ZONE
-            echo $CF_ZONE
-            echo ${{ secrets.CF_ZONE }}
-            echo ======================
-            export CF_ZONE=$secrets.CF_ZONE
-            echo $CF_ZONE
-            echo ${{ secrets.CF_ZONE }}
-            echo ======================
             export CF_ZONE=${{ secrets.CF_ZONE }}
-            echo $CF_ZONE
-            echo ${{ secrets.CF_ZONE }}
+            export CF_API_KEY=${{ secrets.CF_API_KEY }}
             echo ======================
-            exit
+
             # Navigate to app directory (or create it)
             mkdir -p ~/app && cd ~/app
 
