@@ -3,14 +3,9 @@ services:
     build:
       context: .
       dockerfile: ./dockers/Dockerfile.nginx
-    image: c0954832/nginx-server:latest
     container_name: nginx_server
-    volumes:
-      - ~/ssl/cloudflare_scrumstormers.pem:/etc/ssl/certs/cloudflare_scrumstormers.pem:ro
-      - ~/ssl/cloudflare_scrumstormers.key:/etc/ssl/private/cloudflare_scrumstormers.key:ro
     ports:
       - "80:80"
-      - "443:443"
     depends_on:
       - uptime-kuma
     restart: unless-stopped
@@ -19,7 +14,6 @@ services:
     build:
       context: .
       dockerfile: ./dockers/Dockerfile.uptime-kuma
-    image: c0954832/uptime-kuma-custom:latest
     container_name: uptime-kuma
     ports:
       - "3001:3001"
@@ -33,4 +27,3 @@ services:
       - ZONE=${CF_ZONE}
       - PROXIED=true
     restart: unless-stopped
-
