@@ -31,9 +31,9 @@ This is a simple site built as part of our coursework. It showcases static web i
 ### Isaac (`@c0954832`)
 - Created Episodes.html
 - Created JS file
-- Restructured folders
-- Set up Azure VM
-- Automated Azure GitHub pulls
+- Automated container deployment to Docker Hub and Azure
+- Set up Azure Container App
+- Uploaded episodes to populate episodes page
 
 ### Owen (`@c0942695`)
 - Created Template
