@@ -41,9 +41,6 @@ jobs:
             mkdir -p ~/ssl
             echo "${{ secrets.CF_CERT }}" > ~/ssl/cloudflare_scrumstormers.pem
             echo "${{ secrets.CF_KEY }}" > ~/ssl/cloudflare_scrumstormers.key
-            sudo mkdir -p /etc/ssl/certs /etc/ssl/private
-            sudo cp ~/ssl/cloudflare_scrumstormers.pem /etc/ssl/certs/
-            sudo cp ~/ssl/cloudflare_scrumstormers.key /etc/ssl/private/
             sudo chmod 600 /etc/ssl/private/cloudflare_scrumstormers.key
 
             # Write secrets to .env file for docker-compose
