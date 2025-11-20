@@ -25,7 +25,7 @@ jobs:
           host: ${{ secrets.AZURE_VM_HOST }}
           username: ${{ secrets.AZURE_VM_USER }}
           key: ${{ secrets.AZURE_VM_KEY }}
-          # envs: CF_ZONE,CF_API_KEY
+          envs: CF_ZONE,CF_API_KEY
           script: |
             export CF_API_KEY=$CF_API_KEY
             export CF_ZONE=$CF_ZONE
