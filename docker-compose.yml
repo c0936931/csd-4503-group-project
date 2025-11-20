@@ -6,8 +6,8 @@ services:
     image: c0954832/nginx-server:latest
     container_name: nginx_server
     volumes:
-      - /home/Barrack1393/ssl/cloudflare_scrumstormers.pem:/etc/ssl/certs/cloudflare_scrumstormers.pem:ro
-      - /home/Barrack1393/ssl/cloudflare_scrumstormers.key:/etc/ssl/private/cloudflare_scrumstormers.key:ro
+      - /etc/ssl/custom/cloudflare_scrumstormers.pem:/etc/ssl/certs/cloudflare_scrumstormers.pem:ro
+      - /etc/ssl/custom/cloudflare_scrumstormers.key:/etc/ssl/private/cloudflare_scrumstormers.key:ro
     ports:
       - "80:80"
       - "443:443"
