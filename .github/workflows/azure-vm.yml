@@ -1,0 +1,52 @@
+name: Deploy to Azure VM
+
+on:
+  workflow_dispatch:
+    inputs:
+        branch:
+          description: 'Branch to run workflow on'
+          required: true
+          default: 'main'
+
+jobs:
+  deploy:
+    # Run if (workflow_run succeeded) OR (manual dispatch)
+    if: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: SSH into Azure VM and deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_KEY }}
+          script: |
+            # Navigate to app directory (or create it)
+            mkdir -p ~/app && cd ~/app
+
+            # Clone or pull latest repo
+            if [ -d ".git" ]; then
+              git pull
+            else
+              git clone https://github.com/c0936931/csd-4503-group-project.git .
+            fi
+
+            # Deploy certs
+            mkdir -p ~/ssl
+            echo "${{ secrets.CF_CERT }}" > ~/ssl/cloudflare_scrumstormers.pem
+            echo "${{ secrets.CF_KEY }}" > ~/ssl/cloudflare_scrumstormers.key
+            sudo chmod 600 /etc/ssl/private/cloudflare_scrumstormers.key
+            
+            # Run docker-compose with ephemeral env-file
+            cat > .env <<EOF
+            CF_ZONE=${{ secrets.CF_ZONE }}
+            CF_API_KEY=${{ secrets.CF_API_KEY }}
+            EOF
+
+            sudo docker-compose up -d --build
+
+            rm -f .env
