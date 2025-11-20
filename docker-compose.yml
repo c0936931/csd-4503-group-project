@@ -18,12 +18,3 @@ services:
     ports:
       - "3001:3001"
     restart: unless-stopped
-
-  cloudflare-ddns:
-    image: oznu/cloudflare-ddns:latest
-    container_name: cloudflare-ddns
-    environment:
-      - API_KEY=${CF_API_KEY}
-      - ZONE=${CF_ZONE}
-      - PROXIED=true
-    restart: unless-stopped
