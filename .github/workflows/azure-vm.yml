@@ -1,6 +1,14 @@
+name: Deploy to Azure VM
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -11,16 +19,16 @@ jobs:
           host: ${{ secrets.AZURE_VM_HOST }}
           username: ${{ secrets.AZURE_VM_USER }}
           key: ${{ secrets.AZURE_VM_KEY }}
-          envs: CF_API_KEY,CF_ZONE
           script: |
-            cd ~/app
+            # Navigate to app directory (or create it)
+            mkdir -p ~/app && cd ~/app
 
-            # Export secrets into environment for docker-compose
-            export CF_API_KEY="${{ secrets.CF_API_KEY }}"
-            export CF_ZONE="${{ secrets.CF_ZONE }}"
+            # Clone or pull latest repo
+            if [ -d ".git" ]; then
+              git pull
+            else
+              git clone https://github.com/c0936931/csd-4503-group-project.git .
+            fi
 
-            # Pull latest repo
-            git clone https://github.com/c0936931/csd-4503-group-project.git .
-
-            # Run docker-compose with secrets
+            # Build and run docker-compose
             docker-compose up -d --build
