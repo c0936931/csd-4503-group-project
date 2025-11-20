@@ -22,6 +22,7 @@ jobs:
           host: ${{ secrets.AZURE_VM_HOST }}
           username: ${{ secrets.AZURE_VM_USER }}
           key: ${{ secrets.AZURE_VM_KEY }}
+          envs: CF_ZONE,CF_API_KEY   # <-- bring secrets over as env vars
           script: |
             # Navigate to app directory (or create it)
             mkdir -p ~/app && cd ~/app
@@ -33,5 +34,9 @@ jobs:
               git clone https://github.com/c0936931/csd-4503-group-project.git .
             fi
 
+            # Export secrets so docker-compose can use them
+            export CF_ZONE="${CF_ZONE}"
+            export CF_API_KEY="${CF_API_KEY}"
+
             # Build and run docker-compose
-            docker-compose up -d --build
+            sudo docker-compose up -d --build
