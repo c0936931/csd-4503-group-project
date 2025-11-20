@@ -4,10 +4,11 @@ on:
     workflows: ["Lint and Validation"] # 👈 depends on lint workflow
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   test:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} # only run if lint passed
+    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }} # only run if lint passed
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
