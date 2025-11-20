@@ -2,7 +2,7 @@ name: Deploy to Azure VM
 
 on:
   workflow_run:
-    workflows: ["Lint and Vailidation testing", "Playwright Tests"]  # <-- workflow names, not filenames
+    workflows: ["Playwright Tests"]  # <-- workflow names, not filenames
     types:
       - completed
 
