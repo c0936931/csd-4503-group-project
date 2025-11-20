@@ -27,10 +27,3 @@ jobs:
         run: |
           docker compose -f docker-compose.yml build
           docker compose -f docker-compose.yml push
-
-      # Step 4: Deploy to Azure Web App
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          images: c0954832/devopsgroupassignment:latest
