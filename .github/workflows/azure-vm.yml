@@ -41,8 +41,11 @@ jobs:
             sudo chmod 600 /etc/ssl/private/cloudflare_scrumstormers.key
             
             # Run docker-compose with ephemeral env-file
-            sudo docker-compose --env-file <(cat <<EOF
+            cat > .env <<EOF
             CF_ZONE=${{ secrets.CF_ZONE }}
             CF_API_KEY=${{ secrets.CF_API_KEY }}
             EOF
-            ) up -d --build
+
+            sudo docker-compose up -d --build
+
+            rm -f .env
