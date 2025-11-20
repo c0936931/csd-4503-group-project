@@ -2,7 +2,7 @@ name: Deploy to Azure VM
 
 on:
   workflow_run:
-    workflows: ["Playwright Tests"]  # <-- workflow names, not filenames
+    workflows: ["Playwright Tests"] # <-- workflow names, not filenames
     types:
       - completed
 
@@ -26,7 +26,7 @@ jobs:
             # Export secrets so docker-compose can use them
             export CF_ZONE="${CF_ZONE}"
             export CF_API_KEY="${CF_API_KEY}"
-            
+
             # Navigate to app directory (or create it)
             mkdir -p ~/app && cd ~/app
 
