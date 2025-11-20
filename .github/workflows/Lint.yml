@@ -1,4 +1,4 @@
-name: Lint and Vailidation testing
+name: Lint and Validation testing
 
 on:
   push:
@@ -34,3 +34,4 @@ jobs:
 
       - name: Lint JavaScript files
         run: eslint "html/js/*.js" --config lint-configs/eslint.config.cjs "html/js/*.js"
+
