@@ -1,10 +1,9 @@
 name: Build & Deploy Multi-Container to Azure
 
 on:
-  workflow_run:
-    workflows: ["Playwright Tests"] # <-- workflow names, not filenames
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   build-deploy:
