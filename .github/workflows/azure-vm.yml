@@ -6,11 +6,6 @@ on:
     types:
       - completed
   workflow_dispatch:
-    inputs:
-        branch:
-          description: 'Branch to run workflow on'
-          required: true
-          default: 'main'
 
 jobs:
   deploy:
