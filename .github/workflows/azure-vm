@@ -1,0 +1,26 @@
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: SSH into Azure VM and deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_KEY }}
+          envs: CF_API_KEY,CF_ZONE
+          script: |
+            cd ~/app
+
+            # Export secrets into environment for docker-compose
+            export CF_API_KEY="${{ secrets.CF_API_KEY }}"
+            export CF_ZONE="${{ secrets.CF_ZONE }}"
+
+            # Pull latest repo
+            git clone https://github.com/c0936931/csd-4503-group-project.git .
+
+            # Run docker-compose with secrets
+            docker-compose up -d --build
