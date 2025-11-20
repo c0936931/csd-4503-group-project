@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -34,5 +35,6 @@ jobs:
 
       - name: Lint JavaScript files
         run: eslint "html/js/*.js" --config lint-configs/eslint.config.cjs "html/js/*.js"
+
 
 
