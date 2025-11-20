@@ -9,8 +9,8 @@ on:
 
 jobs:
   deploy:
-    # Only run if both upstream workflows finished successfully
-    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
+    # Run if (workflow_run succeeded) OR (manual dispatch)
+    if: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
 
     steps:
