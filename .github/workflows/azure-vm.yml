@@ -5,6 +5,7 @@ on:
     workflows: ["Playwright Tests"] # <-- workflow names, not filenames
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   deploy:
