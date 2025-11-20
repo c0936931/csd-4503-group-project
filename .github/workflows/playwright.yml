@@ -8,7 +8,8 @@ on:
 
 jobs:
   test:
-    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }} # only run if lint passed
+    # Run if (workflow_run succeeded) OR (manual dispatch)
+    if: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') || github.event_name == 'workflow_dispatch' }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
