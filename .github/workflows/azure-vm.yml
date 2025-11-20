@@ -2,11 +2,6 @@ name: Deploy to Azure VM
 
 on:
   workflow_dispatch:
-    inputs:
-        branch:
-          description: 'Branch to run workflow on'
-          required: true
-          default: 'main'
 
 jobs:
   deploy:
