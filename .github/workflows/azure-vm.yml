@@ -31,14 +31,13 @@ jobs:
             if [ -d ".git" ]; then
               git pull
             else
-              git clone https://github.com/c0936931/csd-4503-group-project.git .
+              git clone -b azure_vm+https https://github.com/c0936931/csd-4503-group-project.git .
             fi
 
-            # Deploy certs
             mkdir -p ~/ssl
-            echo "${{ secrets.CF_CERT }}" > ~/ssl/cloudflare_scrumstormers.pem
-            echo "${{ secrets.CF_KEY }}" > ~/ssl/cloudflare_scrumstormers.key
-            sudo chmod 600 /etc/ssl/private/cloudflare_scrumstormers.key
+            echo "${{ secrets.CF_CERT }}" > /home/Barrack1393/ssl/cloudflare_scrumstormers.pem
+            echo "${{ secrets.CF_KEY }}" > /home/Barrack1393/ssl/cloudflare_scrumstormers.key
+            sudo chmod 600 /home/Barrack1393/cloudflare_scrumstormers.key
             
             # Run docker-compose with ephemeral env-file
             cat > .env <<EOF
