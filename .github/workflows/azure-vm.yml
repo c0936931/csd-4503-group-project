@@ -19,9 +19,6 @@ jobs:
 
       - name: SSH into Azure VM and deploy
         uses: appleboy/ssh-action@v0.1.10
-        # env:
-        #   CF_ZONE: ${{ secrets.CF_ZONE }}
-        #   CF_API_KEY: ${{ secrets.CF_API_KEY }}
         with:
           host: ${{ secrets.AZURE_VM_HOST }}
           username: ${{ secrets.AZURE_VM_USER }}
@@ -42,15 +39,10 @@ jobs:
             echo "${{ secrets.CF_CERT }}" > ~/ssl/cloudflare_scrumstormers.pem
             echo "${{ secrets.CF_KEY }}" > ~/ssl/cloudflare_scrumstormers.key
             sudo chmod 600 /etc/ssl/private/cloudflare_scrumstormers.key
-
-            # Write secrets to .env file for docker-compose
-            cat > .env <<EOF
+            
+            # Run docker-compose with ephemeral env-file
+            sudo docker-compose --env-file <(cat <<EOF
             CF_ZONE=${{ secrets.CF_ZONE }}
             CF_API_KEY=${{ secrets.CF_API_KEY }}
             EOF
-
-            # Build and run docker-compose
-            sudo docker-compose up -d --build
-
-            # Clean up .env file after deployment
-            rm -f .env
+            ) up -d --build
