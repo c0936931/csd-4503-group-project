@@ -5,9 +5,9 @@
     "test": "tests"
   },
   "scripts": {
-  "lint:js": "eslint \"html/js/**/*.js\" --config lint-configs/eslint.config.cjs",
-  "lint:css": "stylelint \"html/css/**/*.css\" --config lint-configs/.stylelintrc.json",
-  "lint": "npm run lint:js && npm run lint:css"
+    "lint:js": "eslint \"html/js/**/*.js\" --config lint-configs/eslint.config.cjs",
+    "lint:css": "stylelint \"html/css/**/*.css\" --config lint-configs/.stylelintrc.json",
+    "lint": "npm run lint:js && npm run lint:css"
   },
   "repository": {
     "type": "git",
