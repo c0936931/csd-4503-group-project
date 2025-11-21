@@ -29,6 +29,9 @@ jobs:
             # Get latest file
             sudo curl -O https://raw.githubusercontent.com/c0936931/csd-4503-group-project/main/settings_files/gatus/config.yml
 
+            # Check if network exists
+            docker network inspect my_network >/dev/null 2>&1 || docker network create my_network
+            
             # Run docker
-            sudo docker run --rm -d -p 8081:8080 -v $(pwd)/config.yml:/config/config.yml --name gatus_other twinproduction/gatus:latest
+            sudo docker run --rm -d -p 8081:8080 -v $(pwd)/config.yml:/config/config.yml --network my_network --name gatus_other twinproduction/gatus:latest
 
