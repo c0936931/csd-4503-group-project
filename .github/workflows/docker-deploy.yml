@@ -1,13 +1,16 @@
 name: Build & Deploy Multi-Container to Azure
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Playwright Tests"] # <-- workflow names, not filenames
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
   build-deploy:
+    # Run if (workflow_run succeeded) OR (manual dispatch)
+    if: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
 
     steps:
