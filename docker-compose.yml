@@ -26,14 +26,6 @@ services:
     networks:
       - my_network
 
-  # Dummy gatus_other
-  gatus_other:
-    image: twinproduction/gatus:latest
-    networks:
-      - my_network
-    deploy:
-      replicas: 0
-
   cloudflare-ddns:
     image: oznu/cloudflare-ddns:latest
     container_name: cloudflare-ddns
