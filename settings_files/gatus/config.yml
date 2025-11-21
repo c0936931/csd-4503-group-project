@@ -1,17 +1,23 @@
 endpoints:
-  # local http ping
-  - name: "Local HTTP Ping"
-    url: "tcp://nginx_server:80"
+  # local http
+  - name: "Local HTTP"
+    url: "http://nginx_server:80"
     interval: 60s
     conditions:
-      - "[CONNECTED] == true"
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 500"
+    client:
+      insecure: true
 
-  # local https ping
-  - name: "Local HTTPS Ping"
-    url: "tcp://nginx_server:440"
+  # local https
+  - name: "Local HTTPS"
+    url: "https://nginx_server:440"
     interval: 60s
     conditions:
-      - "[CONNECTED] == true"
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 500"
+    client:
+      insecure: true
 
   # Public-facing domain served by nginx
   - name: "Public Site: Ping"
