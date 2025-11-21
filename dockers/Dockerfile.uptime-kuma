@@ -1,5 +1,0 @@
-# Dockerfile.kuma
-FROM louislam/uptime-kuma:latest
-
-# Copy persistent data
-COPY ./settings_files/kuma/kumadata /app/data
