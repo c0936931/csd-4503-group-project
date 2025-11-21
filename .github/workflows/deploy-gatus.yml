@@ -32,6 +32,14 @@ jobs:
             # Check if network exists
             docker network inspect my_network >/dev/null 2>&1 || docker network create my_network
             
-            # Run docker
-            sudo docker run --rm -d -p 8081:8080 -v $(pwd)/config.yml:/config/config.yml --network my_network --name gatus_other twinproduction/gatus:latest
-
+            # Check if container already exists
+            if [ "$(docker ps -q -f name=gatus_other)" ]; then
+              echo "Container gatus_other already running. Skipping creation."
+            else
+              echo "Starting new gatus_other container..."
+              sudo docker run -d -p 8081:8080 \
+                -v $(pwd)/config.yml:/config/config.yml \
+                --network my_network \
+                --name gatus_other \
+                twinproduction/gatus:latest
+            fi
