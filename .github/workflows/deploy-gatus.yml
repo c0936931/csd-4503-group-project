@@ -30,10 +30,10 @@ jobs:
             sudo curl -O https://raw.githubusercontent.com/c0936931/csd-4503-group-project/main/settings_files/gatus/config.yml
 
             # Check if network exists
-            docker network inspect my_network >/dev/null 2>&1 || docker network create my_network
+            sudo docker network inspect my_network >/dev/null 2>&1 || sudo docker network create my_network
             
             # Check if container already exists
-            if [ "$(docker ps -q -f name=gatus_other)" ]; then
+            if [ "$(sudo docker ps -q -f name=gatus_other)" ]; then
               echo "Container gatus_other already running. Skipping creation."
             else
               echo "Starting new gatus_other container..."
