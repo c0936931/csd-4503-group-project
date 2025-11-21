@@ -1,15 +1,15 @@
 endpoints:
   # local http
-  - name: "Local http"
-    url: "http://nginx:80"
+  - name: "Local HTTP"
+    url: "http://nginx_server:80"
     interval: 60s
     conditions:
       - "[STATUS] == 200"
       - "[RESPONSE_TIME] < 500"
 
   # local https
-  - name: "Local https"
-    url: "https://nginx:440"
+  - name: "Local HTTPS"
+    url: "https://nginx_server:440"
     interval: 60s
     conditions:
       - "[STATUS] == 200"
