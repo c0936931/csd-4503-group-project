@@ -9,13 +9,13 @@ services:
       - "80:80"
     restart: unless-stopped
   
-  gatus:
-    image: twinproduction/gatus:latest
-    ports:
-      - "8080:80"
-    volumes:
-      - ./settings_files/gatus:/config
-    restart: unless-stopped
+  # gatus:
+  #   image: twinproduction/gatus:latest
+  #   ports:
+  #     - "8080:80"
+  #   volumes:
+  #     - ./settings_files/gatus:/config
+  #   restart: unless-stopped
 
   # uptime-kuma:
   #   build:
@@ -35,5 +35,6 @@ services:
   #     - ZONE=${CF_ZONE}
   #     - PROXIED=true
   #   restart: unless-stopped
+
 
 
