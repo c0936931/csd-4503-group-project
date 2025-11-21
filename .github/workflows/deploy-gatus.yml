@@ -1,0 +1,34 @@
+name: Deploy to Gatus Azure VM
+
+on:
+  push:
+    paths:
+      - 'settings_files/gatus/config.yml'   # Only run when config.yml changes
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: SSH into Azure VM and deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_KEY }}
+          script: |
+            # Navigate to gatus directory (or create it)
+            mkdir -p ~/gatus && cd ~/gatus
+
+            # Get latest file
+            git checkout origin/main -- settings_files/gatus/config.yml
+
+            # Run docker
+            docker run --rm -d -p 8081:8080 -v $(pwd)/config.yml:/config/config.yml twinproduction/gatus:latest
+
