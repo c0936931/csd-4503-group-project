@@ -27,8 +27,8 @@ jobs:
             mkdir -p ~/gatus && cd ~/gatus
 
             # Get latest file
-            git checkout origin/main -- settings_files/gatus/config.yml
+            sudo curl -O https://raw.githubusercontent.com/c0936931/csd-4503-group-project/main/settings_files/gatus/config.yml
 
             # Run docker
-            docker run --rm -d -p 8081:8080 -v $(pwd)/config.yml:/config/config.yml twinproduction/gatus:latest
+            sudo docker run --rm -d -p 8081:8080 -v $(pwd)/config.yml:/config/config.yml twinproduction/gatus:latest
 
