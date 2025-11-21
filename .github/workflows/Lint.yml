@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  lint-and-validate:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +35,7 @@ jobs:
 
       - name: Lint JavaScript files
         run: eslint "html/js/*.js" --config lint-configs/eslint.config.cjs "html/js/*.js"
+
 
 
 
