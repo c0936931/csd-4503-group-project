@@ -12,19 +12,15 @@ services:
       - "80:80"
       - "443:443"
     restart: unless-stopped
-    networks:
-      - my_network
 
   gatus:
     image: twinproduction/gatus:latest
-    container_name: gatus_main
+    container_name: gatus
     restart: unless-stopped
     ports:
       - "8080:8080"
     volumes:
       - ./settings_files/gatus:/config
-    networks:
-      - my_network
 
   cloudflare-ddns:
     image: oznu/cloudflare-ddns:latest
@@ -34,9 +30,4 @@ services:
       - ZONE=${CF_ZONE}
       - PROXIED=true
     restart: unless-stopped
-    networks:
-      - my_network
 
-networks:
-  my_network:
-    driver: bridge
