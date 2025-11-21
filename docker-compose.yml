@@ -13,15 +13,14 @@ services:
       - "443:443"
     restart: unless-stopped
 
-  uptime-kuma:
-    build:
-      context: .
-      dockerfile: ./dockers/Dockerfile.uptime-kuma
-    image: c0954832/uptime-kuma-custom:latest
-    container_name: uptime-kuma
-    ports:
-      - "3001:3001"
+  gatus:
+    image: twinproduction/gatus:latest
+    container_name: gatus
     restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./settings_files/gatus:/config
 
   cloudflare-ddns:
     image: oznu/cloudflare-ddns:latest

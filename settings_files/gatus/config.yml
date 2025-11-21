@@ -1,0 +1,41 @@
+endpoints:
+  # local http
+  - name: "Local http"
+    url: "http://nginx:80"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 500"
+
+  # local https
+  - name: "Local https"
+    url: "https://nginx:440"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 500"
+
+  # Public-facing domain served by nginx
+  - name: "Public Site: Ping"
+    url: "https://scrumstormers.xyz"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 1000"
+  
+  # Public site (pattern match)
+  - name: "Public Site: Pattern Match"
+    url: "https://scrumstormers.xyz"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 1000"
+      - "[BODY] == pat(*<h1>Welcome</h1>*)"
+
+  # Public-facing Gatus status page itself
+  - name: "Public Site: Status Page"
+    url: "https://status.scrumstormers.xyz"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 1000"
