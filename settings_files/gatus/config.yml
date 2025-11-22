@@ -1,4 +1,11 @@
 endpoints:
+  # Azure site
+  - name: "Azure Site: Ping"
+    url: "https://devopsfinalcontainer-ajfyhjachbgchwgu.canadacentral-01.azurewebsites.net/"
+    interval: 5m
+    conditions:
+      - "[Status] == 200"
+
   # Public-facing domain served by nginx
   - name: "Public Site: Ping"
     url: "https://scrumstormers.xyz"
