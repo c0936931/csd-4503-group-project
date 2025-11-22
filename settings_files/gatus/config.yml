@@ -1,3 +1,6 @@
+web:
+  port: 80
+
 endpoints:
   - name: Public Website
     url: "https://devopsfinalcontainer-ajfyhjachbgchwgu.canadacentral-01.azurewebsites.net/"
