@@ -2,7 +2,7 @@ endpoints:
   # Azure site
   - name: "Azure Site: Ping"
     url: "https://devopsfinalcontainer-ajfyhjachbgchwgu.canadacentral-01.azurewebsites.net/"
-    interval: 5m
+    interval: 60s
     conditions:
       - "[Status] == 200"
 
