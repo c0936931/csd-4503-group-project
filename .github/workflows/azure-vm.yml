@@ -1,12 +1,10 @@
 name: Deploy to Azure VM
 
 on:
-  workflow_run:
-    workflows: ["Playwright Tests"] # <-- workflow names, not filenames
-    types:
-      - completed
   workflow_dispatch:
-
+  push:
+    branches:
+      - https_test
 jobs:
   deploy:
     # Run if (workflow_run succeeded) OR (manual dispatch)
@@ -31,14 +29,14 @@ jobs:
             if [ -d ".git" ]; then
               git pull
             else
-              git clone -b azure_vm+https https://github.com/c0936931/csd-4503-group-project.git .
+              git clone https://github.com/c0936931/csd-4503-group-project.git .
             fi
 
-            sudo mkdir -p /etc/ssl/custom
-            printf "%s" "${{ secrets.CF_CERT }}" | sudo tee /etc/ssl/custom/cloudflare_scrumstormers.pem > /dev/null
-            printf "%s" "${{ secrets.CF_KEY }}"  | sudo tee /etc/ssl/custom/cloudflare_scrumstormers.key > /dev/null
-            sudo chmod 644 /etc/ssl/custom/cloudflare_scrumstormers.pem
-            sudo chmod 600 /etc/ssl/custom/cloudflare_scrumstormers.key
+            # Deploy certs
+            mkdir -p ~/ssl
+            echo "${{ secrets.CF_CERT }}" > ~/ssl/cloudflare_scrumstormers.pem
+            echo "${{ secrets.CF_KEY }}" > ~/ssl/cloudflare_scrumstormers.key
+            sudo chmod 600 /etc/ssl/private/cloudflare_scrumstormers.key
             
             # Run docker-compose with ephemeral env-file
             cat > .env <<EOF
