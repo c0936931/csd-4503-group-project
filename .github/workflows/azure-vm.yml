@@ -2,7 +2,9 @@ name: Deploy to Azure VM
 
 on:
   workflow_dispatch:
-
+  push:
+    branches:
+      - https_test
 jobs:
   deploy:
     # Run if (workflow_run succeeded) OR (manual dispatch)
