@@ -3,6 +3,20 @@
 [![Playwright Tests](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml/badge.svg)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml)
 
 
+> ----------------------------------------------------------------------
+
+> # ⚠️ NOTE ⚠️
+> **This branch is personally developed as a side project of Jared - @c0936931**
+
+> This is not part of the assignment and should be treated as an experiment
+
+> The main changes for this experiment is using a vm for deployment to allow for dns setup.
+
+> To access the modified site see: https://scrumstormers.xyz/
+
+> ----------------------------------------------------------------------
+
+
 ## 📘 Project Overview
 This is a simple site built as part of our coursework. It showcases static web integration, and containerized deployment using Docker and Nginx.
 
