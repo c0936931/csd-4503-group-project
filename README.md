@@ -19,6 +19,10 @@ This is a simple site built as part of our coursework. It showcases static web i
 - Git & GitHub
 - GitHub Actions
 - Microsoft Azure
+- HTML-Validate
+- ESLint
+- Stylelint
+- Playwright
 
 ## 👥 Contributors
 
@@ -39,3 +43,6 @@ This is a simple site built as part of our coursework. It showcases static web i
 - Created Template
 - Developed CSS
 - Created Logo
+- Created Index.html
+- Setup Linting and HTML-Validate
+- Setup Playwright testing
