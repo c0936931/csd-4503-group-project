@@ -1,7 +1,7 @@
 # Group project for CSD-4503 DevOps
 [![Lint and Validation](https://github.com/c0936931/csd-4503-group-project/actions/workflows/Lint.yml/badge.svg?branch=main)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/Lint.yml)
 [![Playwright Tests](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml/badge.svg)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml)
-
+[![Build & Deploy Multi-Container to Azure](https://github.com/c0936931/csd-4503-group-project/actions/workflows/docker-deploy.yml/badge.svg)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/docker-deploy.yml)
 
 > ----------------------------------------------------------------------
 
@@ -33,6 +33,10 @@ This is a simple site built as part of our coursework. It showcases static web i
 - Git & GitHub
 - GitHub Actions
 - Microsoft Azure
+- HTML-Validate
+- ESLint
+- Stylelint
+- Playwright
 
 ## 👥 Contributors
 
@@ -45,11 +49,14 @@ This is a simple site built as part of our coursework. It showcases static web i
 ### Isaac (`@c0954832`)
 - Created Episodes.html
 - Created JS file
-- Restructured folders
-- Set up Azure VM
-- Automated Azure GitHub pulls
+- Automated container deployment to Docker Hub and Azure
+- Set up Azure Container App
+- Uploaded episodes to populate episodes page
 
 ### Owen (`@c0942695`)
 - Created Template
 - Developed CSS
 - Created Logo
+- Created Index.html
+- Setup Linting and HTML-Validate
+- Setup Playwright testing
