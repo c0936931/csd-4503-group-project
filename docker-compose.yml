@@ -5,6 +5,29 @@ services:
       dockerfile: ./dockers/Dockerfile.nginx
     image: c0954832/nginx-server:latest
     container_name: nginx_server
+    volumes:
+      - /etc/ssl/custom/cloudflare_scrumstormers.pem:/etc/ssl/certs/cloudflare_scrumstormers.pem:ro
+      - /etc/ssl/custom/cloudflare_scrumstormers.key:/etc/ssl/private/cloudflare_scrumstormers.key:ro
     ports:
       - "80:80"
+      - "443:443"
     restart: unless-stopped
+
+  gatus:
+    image: twinproduction/gatus:latest
+    container_name: gatus
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./settings_files/gatus:/config
+
+  cloudflare-ddns:
+    image: oznu/cloudflare-ddns:latest
+    container_name: cloudflare-ddns
+    environment:
+      - API_KEY=${CF_API_KEY}
+      - ZONE=${CF_ZONE}
+      - PROXIED=true
+    restart: unless-stopped
+

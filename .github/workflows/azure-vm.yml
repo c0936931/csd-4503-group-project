@@ -27,7 +27,7 @@ jobs:
             if [ -d ".git" ]; then
               git pull
             else
-              git clone -b https_test --single-branch https://github.com/c0936931/csd-4503-group-project.git .
+              git clone -b main --single-branch https://github.com/c0936931//csd-4503-group-project.git .
             fi
 
             # Deploy certs

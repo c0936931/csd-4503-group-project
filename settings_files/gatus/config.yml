@@ -1,10 +1,25 @@
-web:
-  port: 80
-
 endpoints:
-  - name: Public Website
-    url: "https://devopsfinalcontainer-ajfyhjachbgchwgu.canadacentral-01.azurewebsites.net/"
-    interval: 30s
+  # Public-facing domain served by nginx
+  - name: "Public Site: Ping"
+    url: "https://scrumstormers.xyz"
+    interval: 60s
     conditions:
       - "[STATUS] == 200"
-      - "[RESPONSE_TIME] < 10000"
+      - "[RESPONSE_TIME] < 1000"
+  
+  # Public site (pattern match)
+  - name: "Public Site: Pattern Match"
+    url: "https://scrumstormers.xyz"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 1000"
+      - "[BODY] == pat(*<h1>Welcome</h1>*)"
+
+  # Public-facing Gatus status page itself
+  - name: "Public Site: Status Page"
+    url: "https://status.scrumstormers.xyz"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[RESPONSE_TIME] < 1000"
