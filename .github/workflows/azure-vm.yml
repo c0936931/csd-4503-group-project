@@ -2,11 +2,13 @@ name: Deploy to Azure VM
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - https_test
+  workflows: ["Playwright Tests"] # <-- workflow names, not filenames
+    types:
+      - completed
+
 jobs:
   deploy:
+    if: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
 
     steps:
