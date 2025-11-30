@@ -1,7 +1,7 @@
 # Group project for CSD-4503 DevOps
 [![Lint and Validation](https://github.com/c0936931/csd-4503-group-project/actions/workflows/Lint.yml/badge.svg?branch=main)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/Lint.yml)
-[![Playwright Tests](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml/badge.svg)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml)
-[![Build & Deploy Multi-Container to Azure](https://github.com/c0936931/csd-4503-group-project/actions/workflows/docker-deploy.yml/badge.svg)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/docker-deploy.yml)
+[![Playwright Tests](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml/badge.svg?branch=main)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/playwright.yml)
+[![Deploy to Azure VM](https://github.com/c0936931/csd-4503-group-project/actions/workflows/azure-vm.yml/badge.svg?branch=main)](https://github.com/c0936931/csd-4503-group-project/actions/workflows/azure-vm.yml)
 
 > ----------------------------------------------------------------------
 
