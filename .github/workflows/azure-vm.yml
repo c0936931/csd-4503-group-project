@@ -1,10 +1,11 @@
 name: Deploy to Azure VM
 
 on:
-  workflow_dispatch:
-  workflows: ["Playwright Tests"] # <-- workflow names, not filenames
+  workflow_run:
+    workflows: ["Playwright Tests"] # 👈 depends on lint workflow
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   deploy:
